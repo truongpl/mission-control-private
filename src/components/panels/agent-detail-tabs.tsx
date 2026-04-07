@@ -811,9 +811,9 @@ const MODEL_TIER_COLORS: Record<string, string> = {
 }
 
 const MODEL_TIER_LABELS: Record<string, string> = {
-  opus: 'Opus $$$',
-  sonnet: 'Sonnet $$',
-  haiku: 'Haiku $',
+  opus: 'Deep reasoning profile',
+  sonnet: 'Balanced profile',
+  haiku: 'Fast profile',
 }
 
 const DEFAULT_MODEL_BY_TIER: Record<'opus' | 'sonnet' | 'haiku', string> = {
@@ -1143,6 +1143,9 @@ export function CreateAgentModal({
                     </Button>
                   ))}
                 </div>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Profiles are presets. You can set any provider/model string below.
+                </p>
               </div>
 
               <div>
@@ -1160,6 +1163,9 @@ export function CreateAgentModal({
                     <option key={name} value={name} />
                   ))}
                 </datalist>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Supports provider/model IDs (for example: anthropic/claude-sonnet-4-6, openai/gpt-4.1, google/gemini-2.5-pro, ollama/qwen2.5-coder:14b).
+                </p>
               </div>
 
               <div className="grid grid-cols-3 gap-4">
@@ -1606,7 +1612,7 @@ export function ConfigTab({
 
       {config.openclawId && (
         <div className="text-xs text-muted-foreground">
-          OpenClaw ID: <span className="font-mono text-foreground">{config.openclawId}</span>
+          {t('runtimeId')}: <span className="font-mono text-foreground">{config.openclawId}</span>
           {config.isDefault && <span className="ml-2 px-1.5 py-0.5 bg-primary/20 text-primary rounded text-xs">{t('default')}</span>}
         </div>
       )}

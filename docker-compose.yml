@@ -24,7 +24,7 @@ services:
       - path: .env
         required: false
     volumes:
-      - mc-data:/app/.data
+      - ./mc-data:/app/.data
       # Optional: mount your OpenClaw state directory read-only so Mission Control
       # can read agent configs and memory. Uncomment and adjust the host path:
       # - ${OPENCLAW_HOME:-~/.openclaw}:/run/openclaw:ro
@@ -64,9 +64,6 @@ services:
     environment:
       - PORT=${PORT:-3000}
       - NEXT_PUBLIC_GATEWAY_OPTIONAL=true
-
-volumes:
-  mc-data:
 
 networks:
   mc-net:
